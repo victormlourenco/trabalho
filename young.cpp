@@ -117,7 +117,7 @@ bool young::insere(int valor)
 
 young::~young()
 {
-	for (int i = 0; i <	m+1; ++i) {
+	for (int i = 0; i <	m; ++i) {
 		delete[] Y[i];
 	}
 	delete[] Y;
