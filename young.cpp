@@ -24,28 +24,29 @@ void young::youngify(int i, int j)
 	int aux_i = i;
 	int aux_j = j;
 
-	if (i - 1 >= 0 && Y[i][j] < Y[i - 1][j])  {
-		aux_i = i - 1;
-		aux_j = j;
-	}
-
-
-	if (j - 1 >= 0 && Y[aux_i][aux_j] < Y[i][j - 1]) {
-		aux_i = i;
-		aux_j = j - 1;
-	}
-	
-	if (i + 1 <= m-1 && Y[i][j] > Y[i + 1][j])  {
-		aux_i = i + 1;
-		aux_j = j;
-	}
-
-
-	if (j + 1 <= n-1 && Y[aux_i][aux_j] > Y[i][j + 1]) {
+	if (j + 1 <= n - 1 && Y[i][j] > Y[i][j + 1])  {
 		aux_i = i;
 		aux_j = j + 1;
 	}
 
+
+	if (i + 1 <= m - 1 && Y[aux_i][aux_j] > Y[i + 1][j]) {
+		aux_i = i + 1;
+		aux_j = j;
+	}
+
+	if (j - 1 >= 0 && Y[i][j] < Y[i][j - 1])  {
+		aux_i = i;
+		aux_j = j - 1;
+	}
+
+
+	if (i - 1 >= 0 && Y[aux_i][aux_j] < Y[i - 1][j]) {
+		aux_i = i - 1;
+		aux_j = j;
+	}
+
+	
 	if (aux_i != i || aux_j != j) {
 		int aux = Y[i][j];
 		Y[i][j] = Y[aux_i][aux_j];
@@ -64,7 +65,7 @@ bool young::vazio() {
 			}
 		}
 	}
-	if (aux >= (m*n) {
+	if (aux >= m*n) {
 		return true;
 	}
 	else {
@@ -81,7 +82,7 @@ bool young::cheio() {
 			}
 		}
 	}
-	if (aux >= (m*n) {
+	if (aux >= m*n) {
 		return true;
 	}
 	else {
@@ -125,13 +126,13 @@ young::~young()
 
 void young::imprime() {
 
-	for (int j = 0; j < n; j++) {
+	for (int i = 0; i < m; i++) {
 		cout << "\t | ";
-		for (int i = 0; i < m; i++) {
+		for (int j = 0; j < n; j++) {
 
 			if (Y[i][j] == INT_MAX)
 			{
-				cout << "~" << "  |  ";
+				cout << "X" << "  |  ";
 			}
 			else if (Y[i][j] < 10)
 			{
